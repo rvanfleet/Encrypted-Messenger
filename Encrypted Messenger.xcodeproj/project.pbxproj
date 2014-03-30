@@ -14,13 +14,19 @@
 		1FF3B7D418E8DC4B0081A0B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF3B7D318E8DC4B0081A0B1 /* main.m */; };
 		1FF3B7D818E8DC4B0081A0B1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF3B7D718E8DC4B0081A0B1 /* AppDelegate.m */; };
 		1FF3B7DB18E8DC4B0081A0B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FF3B7D918E8DC4B0081A0B1 /* Main.storyboard */; };
-		1FF3B7DE18E8DC4B0081A0B1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF3B7DD18E8DC4B0081A0B1 /* ViewController.m */; };
 		1FF3B7E018E8DC4B0081A0B1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FF3B7DF18E8DC4B0081A0B1 /* Images.xcassets */; };
 		1FF3B7E718E8DC4C0081A0B1 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FF3B7E618E8DC4C0081A0B1 /* XCTest.framework */; };
 		1FF3B7E818E8DC4C0081A0B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FF3B7C718E8DC4B0081A0B1 /* Foundation.framework */; };
 		1FF3B7E918E8DC4C0081A0B1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FF3B7CB18E8DC4B0081A0B1 /* UIKit.framework */; };
 		1FF3B7F118E8DC4C0081A0B1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1FF3B7EF18E8DC4C0081A0B1 /* InfoPlist.strings */; };
 		1FF3B7F318E8DC4C0081A0B1 /* Encrypted_MessengerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF3B7F218E8DC4C0081A0B1 /* Encrypted_MessengerTests.m */; };
+		1FF3B80418E8DDC30081A0B1 /* MyDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF3B7FD18E8DDC30081A0B1 /* MyDataManager.m */; };
+		1FF3B80518E8DDC30081A0B1 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF3B7FF18E8DDC30081A0B1 /* DataManager.m */; };
+		1FF3B80618E8DDC30081A0B1 /* DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF3B80218E8DDC30081A0B1 /* DataSource.m */; };
+		1FF3B80A18E8DDE70081A0B1 /* Messages.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1FF3B80818E8DDE70081A0B1 /* Messages.xcdatamodeld */; };
+		1FF3B81018E8DFCC0081A0B1 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF3B80F18E8DFCC0081A0B1 /* Message.m */; };
+		1FF3B81918E8E1420081A0B1 /* MessagesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF3B81818E8E1420081A0B1 /* MessagesTableViewController.m */; };
+		1FF3B81C18E8E34E0081A0B1 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF3B81B18E8E34E0081A0B1 /* Contact.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,14 +51,27 @@
 		1FF3B7D618E8DC4B0081A0B1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1FF3B7D718E8DC4B0081A0B1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		1FF3B7DA18E8DC4B0081A0B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		1FF3B7DC18E8DC4B0081A0B1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		1FF3B7DD18E8DC4B0081A0B1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		1FF3B7DF18E8DC4B0081A0B1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1FF3B7E518E8DC4C0081A0B1 /* Encrypted MessengerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Encrypted MessengerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FF3B7E618E8DC4C0081A0B1 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		1FF3B7EE18E8DC4C0081A0B1 /* Encrypted MessengerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Encrypted MessengerTests-Info.plist"; sourceTree = "<group>"; };
 		1FF3B7F018E8DC4C0081A0B1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1FF3B7F218E8DC4C0081A0B1 /* Encrypted_MessengerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Encrypted_MessengerTests.m; sourceTree = "<group>"; };
+		1FF3B7FC18E8DDC30081A0B1 /* MyDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDataManager.h; sourceTree = "<group>"; };
+		1FF3B7FD18E8DDC30081A0B1 /* MyDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDataManager.m; sourceTree = "<group>"; };
+		1FF3B7FE18E8DDC30081A0B1 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
+		1FF3B7FF18E8DDC30081A0B1 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
+		1FF3B80018E8DDC30081A0B1 /* DataManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManagerDelegate.h; sourceTree = "<group>"; };
+		1FF3B80118E8DDC30081A0B1 /* DataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSource.h; sourceTree = "<group>"; };
+		1FF3B80218E8DDC30081A0B1 /* DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSource.m; sourceTree = "<group>"; };
+		1FF3B80318E8DDC30081A0B1 /* DataSourceCellConfigurer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSourceCellConfigurer.h; sourceTree = "<group>"; };
+		1FF3B80918E8DDE70081A0B1 /* Messages.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Messages.xcdatamodel; sourceTree = "<group>"; };
+		1FF3B80E18E8DFCC0081A0B1 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
+		1FF3B80F18E8DFCC0081A0B1 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
+		1FF3B81718E8E1420081A0B1 /* MessagesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagesTableViewController.h; sourceTree = "<group>"; };
+		1FF3B81818E8E1420081A0B1 /* MessagesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagesTableViewController.m; sourceTree = "<group>"; };
+		1FF3B81A18E8E34E0081A0B1 /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
+		1FF3B81B18E8E34E0081A0B1 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,13 +131,14 @@
 		1FF3B7CD18E8DC4B0081A0B1 /* Encrypted Messenger */ = {
 			isa = PBXGroup;
 			children = (
+				1FF3B80718E8DDC80081A0B1 /* Core Data */,
 				1FF3B7D618E8DC4B0081A0B1 /* AppDelegate.h */,
 				1FF3B7D718E8DC4B0081A0B1 /* AppDelegate.m */,
 				1FF3B7D918E8DC4B0081A0B1 /* Main.storyboard */,
-				1FF3B7DC18E8DC4B0081A0B1 /* ViewController.h */,
-				1FF3B7DD18E8DC4B0081A0B1 /* ViewController.m */,
 				1FF3B7DF18E8DC4B0081A0B1 /* Images.xcassets */,
 				1FF3B7CE18E8DC4B0081A0B1 /* Supporting Files */,
+				1FF3B81718E8E1420081A0B1 /* MessagesTableViewController.h */,
+				1FF3B81818E8E1420081A0B1 /* MessagesTableViewController.m */,
 			);
 			path = "Encrypted Messenger";
 			sourceTree = "<group>";
@@ -150,6 +170,26 @@
 				1FF3B7EF18E8DC4C0081A0B1 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1FF3B80718E8DDC80081A0B1 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				1FF3B7FC18E8DDC30081A0B1 /* MyDataManager.h */,
+				1FF3B7FD18E8DDC30081A0B1 /* MyDataManager.m */,
+				1FF3B7FE18E8DDC30081A0B1 /* DataManager.h */,
+				1FF3B7FF18E8DDC30081A0B1 /* DataManager.m */,
+				1FF3B80018E8DDC30081A0B1 /* DataManagerDelegate.h */,
+				1FF3B80118E8DDC30081A0B1 /* DataSource.h */,
+				1FF3B80218E8DDC30081A0B1 /* DataSource.m */,
+				1FF3B80318E8DDC30081A0B1 /* DataSourceCellConfigurer.h */,
+				1FF3B80818E8DDE70081A0B1 /* Messages.xcdatamodeld */,
+				1FF3B81A18E8E34E0081A0B1 /* Contact.h */,
+				1FF3B81B18E8E34E0081A0B1 /* Contact.m */,
+				1FF3B80E18E8DFCC0081A0B1 /* Message.h */,
+				1FF3B80F18E8DFCC0081A0B1 /* Message.m */,
+			);
+			name = "Core Data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,8 +289,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FF3B7DE18E8DC4B0081A0B1 /* ViewController.m in Sources */,
+				1FF3B81018E8DFCC0081A0B1 /* Message.m in Sources */,
+				1FF3B81918E8E1420081A0B1 /* MessagesTableViewController.m in Sources */,
+				1FF3B80518E8DDC30081A0B1 /* DataManager.m in Sources */,
+				1FF3B80618E8DDC30081A0B1 /* DataSource.m in Sources */,
+				1FF3B80418E8DDC30081A0B1 /* MyDataManager.m in Sources */,
 				1FF3B7D818E8DC4B0081A0B1 /* AppDelegate.m in Sources */,
+				1FF3B80A18E8DDE70081A0B1 /* Messages.xcdatamodeld in Sources */,
+				1FF3B81C18E8E34E0081A0B1 /* Contact.m in Sources */,
 				1FF3B7D418E8DC4B0081A0B1 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -466,6 +512,19 @@
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1FF3B80818E8DDE70081A0B1 /* Messages.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1FF3B80918E8DDE70081A0B1 /* Messages.xcdatamodel */,
+			);
+			currentVersion = 1FF3B80918E8DDE70081A0B1 /* Messages.xcdatamodel */;
+			path = Messages.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1FF3B7BC18E8DC4B0081A0B1 /* Project object */;
 }
