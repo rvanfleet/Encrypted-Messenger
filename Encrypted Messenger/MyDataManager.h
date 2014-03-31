@@ -2,7 +2,7 @@
 //  MyDataManager.h
 //  PSUDirectorySearch
 //
-//  Created by Eileen Van Fleet on 10/21/13.
+//  Created by Ryan Van Fleet on 10/21/13.
 //  Copyright (c) 2013 Ryan Van Fleet. All rights reserved.
 //
 

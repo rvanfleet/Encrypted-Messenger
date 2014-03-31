@@ -25,8 +25,9 @@
 		1FF3B80618E8DDC30081A0B1 /* DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF3B80218E8DDC30081A0B1 /* DataSource.m */; };
 		1FF3B80A18E8DDE70081A0B1 /* Messages.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1FF3B80818E8DDE70081A0B1 /* Messages.xcdatamodeld */; };
 		1FF3B81018E8DFCC0081A0B1 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF3B80F18E8DFCC0081A0B1 /* Message.m */; };
-		1FF3B81918E8E1420081A0B1 /* MessagesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF3B81818E8E1420081A0B1 /* MessagesTableViewController.m */; };
 		1FF3B81C18E8E34E0081A0B1 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF3B81B18E8E34E0081A0B1 /* Contact.m */; };
+		1FF3B82018E8E6300081A0B1 /* AddContactTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF3B81F18E8E6300081A0B1 /* AddContactTableViewController.m */; };
+		1FF3B82318E8EFFB0081A0B1 /* ContactsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF3B82118E8EFFB0081A0B1 /* ContactsTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,10 +69,12 @@
 		1FF3B80918E8DDE70081A0B1 /* Messages.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Messages.xcdatamodel; sourceTree = "<group>"; };
 		1FF3B80E18E8DFCC0081A0B1 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
 		1FF3B80F18E8DFCC0081A0B1 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
-		1FF3B81718E8E1420081A0B1 /* MessagesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagesTableViewController.h; sourceTree = "<group>"; };
-		1FF3B81818E8E1420081A0B1 /* MessagesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagesTableViewController.m; sourceTree = "<group>"; };
 		1FF3B81A18E8E34E0081A0B1 /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
 		1FF3B81B18E8E34E0081A0B1 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
+		1FF3B81E18E8E6300081A0B1 /* AddContactTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddContactTableViewController.h; sourceTree = "<group>"; };
+		1FF3B81F18E8E6300081A0B1 /* AddContactTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddContactTableViewController.m; sourceTree = "<group>"; };
+		1FF3B82118E8EFFB0081A0B1 /* ContactsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsTableViewController.m; sourceTree = "<group>"; };
+		1FF3B82218E8EFFB0081A0B1 /* ContactsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsTableViewController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,14 +134,13 @@
 		1FF3B7CD18E8DC4B0081A0B1 /* Encrypted Messenger */ = {
 			isa = PBXGroup;
 			children = (
+				1FF3B81D18E8E60D0081A0B1 /* Contacts */,
 				1FF3B80718E8DDC80081A0B1 /* Core Data */,
 				1FF3B7D618E8DC4B0081A0B1 /* AppDelegate.h */,
 				1FF3B7D718E8DC4B0081A0B1 /* AppDelegate.m */,
 				1FF3B7D918E8DC4B0081A0B1 /* Main.storyboard */,
 				1FF3B7DF18E8DC4B0081A0B1 /* Images.xcassets */,
 				1FF3B7CE18E8DC4B0081A0B1 /* Supporting Files */,
-				1FF3B81718E8E1420081A0B1 /* MessagesTableViewController.h */,
-				1FF3B81818E8E1420081A0B1 /* MessagesTableViewController.m */,
 			);
 			path = "Encrypted Messenger";
 			sourceTree = "<group>";
@@ -190,6 +192,17 @@
 				1FF3B80F18E8DFCC0081A0B1 /* Message.m */,
 			);
 			name = "Core Data";
+			sourceTree = "<group>";
+		};
+		1FF3B81D18E8E60D0081A0B1 /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				1FF3B82118E8EFFB0081A0B1 /* ContactsTableViewController.m */,
+				1FF3B82218E8EFFB0081A0B1 /* ContactsTableViewController.h */,
+				1FF3B81E18E8E6300081A0B1 /* AddContactTableViewController.h */,
+				1FF3B81F18E8E6300081A0B1 /* AddContactTableViewController.m */,
+			);
+			name = Contacts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,11 +303,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FF3B81018E8DFCC0081A0B1 /* Message.m in Sources */,
-				1FF3B81918E8E1420081A0B1 /* MessagesTableViewController.m in Sources */,
 				1FF3B80518E8DDC30081A0B1 /* DataManager.m in Sources */,
+				1FF3B82318E8EFFB0081A0B1 /* ContactsTableViewController.m in Sources */,
 				1FF3B80618E8DDC30081A0B1 /* DataSource.m in Sources */,
 				1FF3B80418E8DDC30081A0B1 /* MyDataManager.m in Sources */,
 				1FF3B7D818E8DC4B0081A0B1 /* AppDelegate.m in Sources */,
+				1FF3B82018E8E6300081A0B1 /* AddContactTableViewController.m in Sources */,
 				1FF3B80A18E8DDE70081A0B1 /* Messages.xcdatamodeld in Sources */,
 				1FF3B81C18E8E34E0081A0B1 /* Contact.m in Sources */,
 				1FF3B7D418E8DC4B0081A0B1 /* main.m in Sources */,
