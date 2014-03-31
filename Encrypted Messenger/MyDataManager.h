@@ -8,10 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "DataManagerDelegate.h"
+#import "Contact.h"
 
 @interface MyDataManager : NSObject <DataManagerDelegate>
 
 -(void)addContact:(NSDictionary*)dictionary;
 -(void)addMessage:(NSDictionary*)dictionary;
+
+-(void)saveContact:(Contact*)contact;
 
 @end

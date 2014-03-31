@@ -53,4 +53,9 @@
     [dataManager saveContext];
 }
 
+-(void)saveContact:(Contact *)contact
+{
+    [[DataManager sharedInstance] saveContext];
+}
+
 @end

@@ -28,6 +28,7 @@
 		1FF3B81C18E8E34E0081A0B1 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF3B81B18E8E34E0081A0B1 /* Contact.m */; };
 		1FF3B82018E8E6300081A0B1 /* AddContactTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF3B81F18E8E6300081A0B1 /* AddContactTableViewController.m */; };
 		1FF3B82318E8EFFB0081A0B1 /* ContactsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF3B82118E8EFFB0081A0B1 /* ContactsTableViewController.m */; };
+		1FF3B82618E8F6A40081A0B1 /* EditContactTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF3B82518E8F6A40081A0B1 /* EditContactTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,8 @@
 		1FF3B81F18E8E6300081A0B1 /* AddContactTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddContactTableViewController.m; sourceTree = "<group>"; };
 		1FF3B82118E8EFFB0081A0B1 /* ContactsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsTableViewController.m; sourceTree = "<group>"; };
 		1FF3B82218E8EFFB0081A0B1 /* ContactsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsTableViewController.h; sourceTree = "<group>"; };
+		1FF3B82418E8F6A40081A0B1 /* EditContactTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditContactTableViewController.h; sourceTree = "<group>"; };
+		1FF3B82518E8F6A40081A0B1 /* EditContactTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditContactTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +204,8 @@
 				1FF3B82218E8EFFB0081A0B1 /* ContactsTableViewController.h */,
 				1FF3B81E18E8E6300081A0B1 /* AddContactTableViewController.h */,
 				1FF3B81F18E8E6300081A0B1 /* AddContactTableViewController.m */,
+				1FF3B82418E8F6A40081A0B1 /* EditContactTableViewController.h */,
+				1FF3B82518E8F6A40081A0B1 /* EditContactTableViewController.m */,
 			);
 			name = Contacts;
 			sourceTree = "<group>";
@@ -306,6 +311,7 @@
 				1FF3B80518E8DDC30081A0B1 /* DataManager.m in Sources */,
 				1FF3B82318E8EFFB0081A0B1 /* ContactsTableViewController.m in Sources */,
 				1FF3B80618E8DDC30081A0B1 /* DataSource.m in Sources */,
+				1FF3B82618E8F6A40081A0B1 /* EditContactTableViewController.m in Sources */,
 				1FF3B80418E8DDC30081A0B1 /* MyDataManager.m in Sources */,
 				1FF3B7D818E8DC4B0081A0B1 /* AppDelegate.m in Sources */,
 				1FF3B82018E8E6300081A0B1 /* AddContactTableViewController.m in Sources */,
@@ -516,6 +522,7 @@
 				1FF3B7F818E8DC4C0081A0B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1FF3B7F918E8DC4C0081A0B1 /* Build configuration list for PBXNativeTarget "Encrypted MessengerTests" */ = {
 			isa = XCConfigurationList;
@@ -524,6 +531,7 @@
 				1FF3B7FB18E8DC4C0081A0B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

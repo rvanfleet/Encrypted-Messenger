@@ -11,6 +11,7 @@
 #import "MyDataManager.h"
 #import "Contact.h"
 #import "AddContactTableViewController.h"
+#import "EditContactTableViewController.h"
 
 @interface ContactsTableViewController ()
 
@@ -50,6 +51,8 @@
     self.dataSource.tableView = self.tableView;
 
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    self.tableView.allowsSelectionDuringEditing = YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -83,7 +86,7 @@
 
 -(NSString*)cellIdentifierForObject:(id)object
 {
-    return @"Contact";
+    return @"ContactCell";
 }
 
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -94,25 +97,13 @@
 #pragma mark - Table View
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (tableView == self.searchDisplayController.searchResultsTableView)           //User selected a row from the search results table view
-    {
-        [self performSegueWithIdentifier:@"MuscleGroupSegue" sender:nil];
-    }
-    
     if (self.isEditing)
     {
-        UITableViewCell* cell = [self.tableView cellForRowAtIndexPath:[self.tableView indexPathForSelectedRow]];
-        
-        if ([cell.textLabel.text isEqualToString:@"Cardio"])
-        {
-            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Cannot Edit Cardio" message:@"You cannot edit the Cardio muscle group." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            
-            [alert show];
-        }
-        else
-        {
-            [self performSegueWithIdentifier:@"EditMuscleGroupSegue" sender:self];
-        }
+        [self performSegueWithIdentifier:@"EditContactSegue" sender:self];
+    }
+    else
+    {
+        [self performSegueWithIdentifier:@"MessagesSegue" sender:self];
     }
 }
 
@@ -130,42 +121,36 @@
             {
                 NSDictionary* dictionary = obj;
                 
-                if ([self contactIsInTableView:dictionary])
-                {
-                    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Contact Already In Table" message:@"The contact you wanted to add is already included in the table." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                    
-                    [alert show];
-                }
-                else
-                {
-                    [self.myDataManager addContact:dictionary];
-                }
+                [self.myDataManager addContact:dictionary];
             }
         };
     }
-}
-
--(BOOL)contactIsInTableView:(NSDictionary*)dictionary
-{
-    BOOL contactIsInTable = NO;
-    
-    NSString* firstNameToSearchFor = [dictionary objectForKey:@"firstName"];
-    NSString* lastNameToSearchFor = [dictionary objectForKey:@"lastName"];
-    
-    for (NSInteger i = 0; i < [self.dataSource numberOfResultsInSection:0]; i++)
+    else if ([segue.identifier isEqualToString:@"EditContactSegue"])
     {
-        Contact* contact = [self.dataSource objectAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+        EditContactTableViewController* editContactTableViewController = segue.destinationViewController;
         
-        if ([contact.firstName isEqualToString:firstNameToSearchFor] &&
-            [contact.lastName isEqualToString:lastNameToSearchFor])
-        {
-            contactIsInTable = YES;
+        NSIndexPath* selectedIndexPath = [self.tableView indexPathForSelectedRow];
+        
+        Contact* selectedContact = [self.dataSource objectAtIndexPath:selectedIndexPath];
+        
+        editContactTableViewController.contact = selectedContact;
+        
+        editContactTableViewController.completionBlock = ^(id obj){
+        
+            [self dismissViewControllerAnimated:YES completion:NULL];
             
-            break;
-        }
+            if (obj)
+            {
+                Contact* contactToSave = obj;
+
+                [self.myDataManager saveContact:contactToSave];
+            }
+        };
     }
-    
-    return contactIsInTable;
+    else if ([segue.identifier isEqualToString:@"MessagesSegue"])
+    {
+        
+    }
 }
 
 @end
