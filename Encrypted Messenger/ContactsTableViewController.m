@@ -80,8 +80,6 @@
     {
         cell.detailTextLabel.text = @"";
     }
-    
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 }
 
 -(NSString*)cellIdentifierForObject:(id)object
@@ -92,19 +90,6 @@
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return YES;
-}
-
-#pragma mark - Table View
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (self.isEditing)
-    {
-        [self performSegueWithIdentifier:@"EditContactSegue" sender:self];
-    }
-    else
-    {
-        [self performSegueWithIdentifier:@"MessagesSegue" sender:self];
-    }
 }
 
 #pragma mark - Segues
@@ -146,10 +131,6 @@
                 [self.myDataManager saveContact:contactToSave];
             }
         };
-    }
-    else if ([segue.identifier isEqualToString:@"MessagesSegue"])
-    {
-        
     }
 }
 
