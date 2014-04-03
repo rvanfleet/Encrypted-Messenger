@@ -2,7 +2,7 @@
 //  Contact.h
 //  Encrypted Messenger
 //
-//  Created by Ryan Van Fleet on 3/30/14.
+//  Created by Ryan Van Fleet on 4/2/14.
 //  Copyright (c) 2014 Ryan Van Fleet. All rights reserved.
 //
 
@@ -13,10 +13,11 @@
 
 @interface Contact : NSManagedObject
 
-@property (nonatomic, retain) NSString * firstName;
-@property (nonatomic, retain) NSString * phoneNumber;
 @property (nonatomic, retain) NSString * emailAddress;
+@property (nonatomic, retain) NSString * firstName;
 @property (nonatomic, retain) NSString * lastName;
+@property (nonatomic, retain) NSString * phoneNumber;
+@property (nonatomic, retain) NSString * identifier;
 @property (nonatomic, retain) NSSet *messages;
 @end
 

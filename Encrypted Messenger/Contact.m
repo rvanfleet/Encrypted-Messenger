@@ -2,7 +2,7 @@
 //  Contact.m
 //  Encrypted Messenger
 //
-//  Created by Ryan Van Fleet on 3/30/14.
+//  Created by Ryan Van Fleet on 4/2/14.
 //  Copyright (c) 2014 Ryan Van Fleet. All rights reserved.
 //
 
@@ -12,10 +12,11 @@
 
 @implementation Contact
 
-@dynamic firstName;
-@dynamic phoneNumber;
 @dynamic emailAddress;
+@dynamic firstName;
 @dynamic lastName;
+@dynamic phoneNumber;
+@dynamic identifier;
 @dynamic messages;
 
 @end

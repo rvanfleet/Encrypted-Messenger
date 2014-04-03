@@ -10,7 +10,7 @@
 #import "DataSource.h"
 #import "MyDataManager.h"
 #import "Contact.h"
-#import "SingleMessageViewController.h"
+#import "SingleMessageTableViewController.h"
 
 @interface MessagesTableViewController ()
 
@@ -83,11 +83,11 @@
 {
     if ([segue.identifier isEqualToString:@"MessageSegue"])
     {
-        SingleMessageViewController* singleMessageViewController = segue.destinationViewController;
+        SingleMessageTableViewController* singleMessageTableViewController = segue.destinationViewController;
         
         NSIndexPath* selectedIndexPath = [self.tableView indexPathForSelectedRow];
         
-        singleMessageViewController.contact = [self.dataSource objectAtIndexPath:selectedIndexPath];
+        singleMessageTableViewController.contact = [self.dataSource objectAtIndexPath:selectedIndexPath];
     }
 }
 

@@ -28,12 +28,15 @@
     DataManager *dataManager = [DataManager sharedInstance];
     NSManagedObjectContext *managedObjectContext = dataManager.managedObjectContext;
     
+    NSString* newIdentifier = [self getIdentifierForNewContact];
+    
     Contact* contact = [NSEntityDescription insertNewObjectForEntityForName:@"Contact" inManagedObjectContext:managedObjectContext];
     
     contact.firstName = [dictionary objectForKey:@"firstName"];
     contact.lastName = [dictionary objectForKey:@"lastName"];
     contact.phoneNumber = [dictionary objectForKey:@"phoneNumber"];
     contact.emailAddress = [dictionary objectForKey:@"emailAddress"];
+    contact.identifier = newIdentifier;
     
     [dataManager saveContext];
 }
@@ -56,6 +59,29 @@
 -(void)saveContact:(Contact *)contact
 {
     [[DataManager sharedInstance] saveContext];
+}
+
+-(NSString*)getIdentifierForNewContact
+{
+    NSInteger newIdentifier = 0;
+    
+    DataSource* dataSource = [[DataSource alloc] initForEntity:@"Contact" sortKeys:nil ascending:YES predicate:nil sectionNameKeyPath:nil dataManagerDelegate:self];
+    
+    for (NSInteger index = 0; index < [dataSource numberOfResultsInSection:0]; index++)
+    {
+        Contact* contact = [dataSource objectAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
+        
+        NSInteger contactIdentifierInteger = [contact.identifier integerValue];
+        
+        if (contactIdentifierInteger >= newIdentifier)
+        {
+            newIdentifier = contactIdentifierInteger + 1;
+        }
+    }
+    
+    NSString* newIdentifierString = [NSString stringWithFormat:@"%d", (int)newIdentifier];
+    
+    return newIdentifierString;
 }
 
 @end
