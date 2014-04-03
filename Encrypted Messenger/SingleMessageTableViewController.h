@@ -10,7 +10,7 @@
 #import "DataSourceCellConfigurer.h"
 #import "Contact.h"
 
-@interface SingleMessageTableViewController : UITableViewController <UITextFieldDelegate, DataSourceCellConfigurer>
+@interface SingleMessageTableViewController : UITableViewController <UITextFieldDelegate, DataSourceCellConfigurer, UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property (nonatomic, strong) Contact* contact;
 

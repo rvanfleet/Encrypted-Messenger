@@ -16,10 +16,13 @@
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationBar;
 @property (weak, nonatomic) IBOutlet UITextField *cipherTextField;
 @property (weak, nonatomic) IBOutlet UITextField *messageTextField;
+@property (weak, nonatomic) IBOutlet UIView *messageInputView;
 
 @property (strong, nonatomic) DataSource* dataSource;
 @property (nonatomic, strong) MyDataManager *myDataManager;
 
+@property (nonatomic, strong) UIPickerView* cipherPickerView;
+@property (nonatomic, strong) NSArray* cipherPickerData;
 
 @end
 
@@ -58,6 +61,20 @@
     self.dataSource.tableView = self.tableView;
     
     self.navigationBar.title = [NSString stringWithFormat:@"%@ %@", self.contact.firstName, self.contact.lastName];
+    
+    CGRect pickerFrame = CGRectMake(0, 40, 0, 0);
+    
+    self.cipherPickerData = @[@"Caesar's Cipher",
+                              @"Permutation",
+                              @"Double Transposition"];
+    
+    self.cipherPickerView = [[UIPickerView alloc] initWithFrame:pickerFrame];
+    
+    self.cipherPickerView.showsSelectionIndicator = YES;
+    self.cipherPickerView.dataSource = self;
+    self.cipherPickerView.delegate = self;
+    
+    [self.cipherTextField setInputView:self.cipherPickerView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -110,6 +127,14 @@
     return [textField resignFirstResponder];
 }
 
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    if (textField == self.cipherTextField)
+    {
+        textField.text = [self.cipherPickerData objectAtIndex:0];
+    }
+}
+
 -(NSString*)getCiphertextWithCipher:(NSString*)cipher AndPlaintext:(NSString*)plaintext
 {
     return plaintext;
@@ -118,6 +143,27 @@
 -(NSString*)getPlaintextWithCipher:(NSString*)cipher AndCiphertext:(NSString*)ciphertext
 {
     return ciphertext;
+}
+
+#pragma mark - Picker View Delegate
+-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    self.cipherTextField.text = [self.cipherPickerData objectAtIndex:row];
+}
+
+-(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return [self.cipherPickerData count];
+}
+
+-(NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    return [self.cipherPickerData objectAtIndex:row];
 }
 
 @end

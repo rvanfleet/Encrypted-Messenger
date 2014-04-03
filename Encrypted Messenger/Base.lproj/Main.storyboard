@@ -293,12 +293,18 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="Abx-nh-UdE" id="ykG-Qt-HPx"/>
+                                    </connections>
                                 </textField>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Message" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="E8e-uX-1NF">
                                     <rect key="frame" x="20" y="45" width="280" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="Abx-nh-UdE" id="ky3-2q-VLq"/>
+                                    </connections>
                                 </textField>
                             </subviews>
                             <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
@@ -330,6 +336,7 @@
                     <navigationItem key="navigationItem" title="Contact Name" id="Q4v-yo-BRM"/>
                     <connections>
                         <outlet property="cipherTextField" destination="IKD-om-kRL" id="kLn-pF-6bh"/>
+                        <outlet property="messageInputView" destination="JwH-Xi-JzU" id="vya-8d-I5f"/>
                         <outlet property="messageTextField" destination="E8e-uX-1NF" id="rj1-mF-AIh"/>
                         <outlet property="navigationBar" destination="Q4v-yo-BRM" id="bKT-fX-dGh"/>
                     </connections>
