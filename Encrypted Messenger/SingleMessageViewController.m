@@ -11,6 +11,8 @@
 #import "MyDataManager.h"
 #import "Message.h"
 
+#define kCaesarCipherKey 3
+
 @interface SingleMessageViewController ()
 
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationBar;
@@ -104,14 +106,23 @@
     NSString* cipher = self.cipherTextField.text;
     NSString* message = self.messageTextField.text;
     
-    NSString* ciphertext = [self getCiphertextWithCipher:cipher AndPlaintext:message];
-    
-    NSDictionary* dictionary = @{@"contact": self.contact,
-                                 @"date": [NSDate date],
-                                 @"ciphertext": ciphertext,
-                                 @"cipher": cipher};
-    
-    [self.myDataManager addMessage:dictionary];
+    if ([cipher isEqualToString:@""] || [message isEqualToString:@""])
+    {
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Send Unsuccessful" message:@"Please enter both a cipher and a message to be able to send." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        
+        [alert show];
+    }
+    else
+    {
+        NSString* ciphertext = [self getCiphertextWithCipher:cipher AndPlaintext:message];
+        
+        NSDictionary* dictionary = @{@"contact": self.contact,
+                                     @"date": [NSDate date],
+                                     @"ciphertext": ciphertext,
+                                     @"cipher": cipher};
+        
+        [self.myDataManager addMessage:dictionary];
+    }
 }
 
 #pragma mark - Data Source Cell Configurer
@@ -154,12 +165,59 @@
 
 -(NSString*)getCiphertextWithCipher:(NSString*)cipher AndPlaintext:(NSString*)plaintext
 {
-    return plaintext;
+    NSString* ciphertext;
+    
+    //First cipher was selected - Caesar's Cipher
+    if ([cipher isEqualToString:[self.cipherPickerData objectAtIndex:0]])
+    {
+        NSMutableString* ciphertextMutable = [[NSMutableString alloc] init];
+        
+        for (NSInteger index = 0; index < [plaintext length]; index++)
+        {
+            char currentPlaintextChar = [plaintext characterAtIndex:index];
+            
+            char currentCiphertextChar = currentPlaintextChar + kCaesarCipherKey;
+            
+            [ciphertextMutable appendString:[NSString stringWithFormat:@"%c", currentCiphertextChar]];
+        }
+        
+        ciphertext = ciphertextMutable;
+    }
+    else
+    {
+        ciphertext = plaintext;
+    }
+    
+    return ciphertext;
 }
 
 -(NSString*)getPlaintextWithCipher:(NSString*)cipher AndCiphertext:(NSString*)ciphertext
 {
-    return ciphertext;
+    NSString* plaintext;
+    
+    //First cipher was selected - Caesar's Cipher
+    if ([cipher isEqualToString:[self.cipherPickerData objectAtIndex:0]])
+    {
+        
+        NSMutableString* plaintextMutable = [[NSMutableString alloc] init];
+        
+        for (NSInteger index = 0; index < [ciphertext length]; index++)
+        {
+            char currentCiphertextChar = [ciphertext characterAtIndex:index];
+            
+            char currentPlaintextChar = currentCiphertextChar - kCaesarCipherKey;
+            
+            [plaintextMutable appendString:[NSString stringWithFormat:@"%c", currentPlaintextChar]];
+        }
+        
+        plaintext = plaintextMutable;
+    }
+    else
+    {
+        plaintext = ciphertext;
+    }
+    
+    return plaintext;
 }
 
 #pragma mark - Picker View Delegate
