@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1F3020E518ECED9C0019D218 /* SingleMessageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3020E418ECED9C0019D218 /* SingleMessageTableViewController.m */; };
 		1F3020EB18ECF3D40019D218 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3020EA18ECF3D40019D218 /* Contact.m */; };
 		1F70ED6118E9B4A600905D57 /* MessagesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F70ED6018E9B4A600905D57 /* MessagesTableViewController.m */; };
+		1FBF2A2218EF3D6600677DC1 /* SingleMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBF2A2118EF3D6600677DC1 /* SingleMessageViewController.m */; };
 		1FF3B7C818E8DC4B0081A0B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FF3B7C718E8DC4B0081A0B1 /* Foundation.framework */; };
 		1FF3B7CA18E8DC4B0081A0B1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FF3B7C918E8DC4B0081A0B1 /* CoreGraphics.framework */; };
 		1FF3B7CC18E8DC4B0081A0B1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FF3B7CB18E8DC4B0081A0B1 /* UIKit.framework */; };
@@ -44,12 +44,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1F3020E318ECED9C0019D218 /* SingleMessageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleMessageTableViewController.h; sourceTree = "<group>"; };
-		1F3020E418ECED9C0019D218 /* SingleMessageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleMessageTableViewController.m; sourceTree = "<group>"; };
 		1F3020E918ECF3D40019D218 /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
 		1F3020EA18ECF3D40019D218 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
 		1F70ED5F18E9B4A600905D57 /* MessagesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagesTableViewController.h; sourceTree = "<group>"; };
 		1F70ED6018E9B4A600905D57 /* MessagesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagesTableViewController.m; sourceTree = "<group>"; };
+		1FBF2A2018EF3D6600677DC1 /* SingleMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleMessageViewController.h; sourceTree = "<group>"; };
+		1FBF2A2118EF3D6600677DC1 /* SingleMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleMessageViewController.m; sourceTree = "<group>"; };
 		1FF3B7C418E8DC4B0081A0B1 /* Encrypted Messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Encrypted Messenger.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FF3B7C718E8DC4B0081A0B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1FF3B7C918E8DC4B0081A0B1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -115,8 +115,8 @@
 			children = (
 				1F70ED5F18E9B4A600905D57 /* MessagesTableViewController.h */,
 				1F70ED6018E9B4A600905D57 /* MessagesTableViewController.m */,
-				1F3020E318ECED9C0019D218 /* SingleMessageTableViewController.h */,
-				1F3020E418ECED9C0019D218 /* SingleMessageTableViewController.m */,
+				1FBF2A2018EF3D6600677DC1 /* SingleMessageViewController.h */,
+				1FBF2A2118EF3D6600677DC1 /* SingleMessageViewController.m */,
 			);
 			name = Messages;
 			sourceTree = "<group>";
@@ -327,9 +327,9 @@
 			files = (
 				1FF3B81018E8DFCC0081A0B1 /* Message.m in Sources */,
 				1FF3B80518E8DDC30081A0B1 /* DataManager.m in Sources */,
+				1FBF2A2218EF3D6600677DC1 /* SingleMessageViewController.m in Sources */,
 				1FF3B82318E8EFFB0081A0B1 /* ContactsTableViewController.m in Sources */,
 				1FF3B80618E8DDC30081A0B1 /* DataSource.m in Sources */,
-				1F3020E518ECED9C0019D218 /* SingleMessageTableViewController.m in Sources */,
 				1F3020EB18ECF3D40019D218 /* Contact.m in Sources */,
 				1FF3B82618E8F6A40081A0B1 /* EditContactTableViewController.m in Sources */,
 				1FF3B80418E8DDC30081A0B1 /* MyDataManager.m in Sources */,

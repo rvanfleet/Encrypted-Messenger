@@ -37,7 +37,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="Abx-nh-UdE" kind="push" identifier="MessageSegue" id="IAI-RX-cEo"/>
+                                    <segue destination="Xyv-9j-ZOD" kind="push" identifier="MessageSegue" id="ixE-1w-pHm"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -266,84 +266,73 @@
             </objects>
             <point key="canvasLocation" x="537" y="1694"/>
         </scene>
-        <!--Single Message Table View Controller - Contact Name-->
-        <scene sceneID="KOe-zH-9oT">
+        <!--Single Message View Controller - Contact Name-->
+        <scene sceneID="Bsk-Ev-acb">
             <objects>
-                <tableViewController id="Abx-nh-UdE" customClass="SingleMessageTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="qVV-at-N1u">
+                <viewController id="Xyv-9j-ZOD" customClass="SingleMessageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XNr-3I-Jqu"/>
+                        <viewControllerLayoutGuide type="bottom" id="Vwi-Vr-xjX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7dU-UX-7Wo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <view key="tableFooterView" contentMode="scaleToFill" id="JwH-Xi-JzU">
-                            <rect key="frame" x="0.0" y="130" width="320" height="81"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F2o-zE-evE">
-                                    <rect key="frame" x="254" y="7" width="46" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="Send">
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="send:" destination="Abx-nh-UdE" eventType="touchUpInside" id="zex-lV-wss"/>
-                                    </connections>
-                                </button>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Cipher" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IKD-om-kRL">
-                                    <rect key="frame" x="20" y="7" width="226" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                    <connections>
-                                        <outlet property="delegate" destination="Abx-nh-UdE" id="ykG-Qt-HPx"/>
-                                    </connections>
-                                </textField>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Message" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="E8e-uX-1NF">
-                                    <rect key="frame" x="20" y="45" width="280" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes"/>
-                                    <connections>
-                                        <outlet property="delegate" destination="Abx-nh-UdE" id="ky3-2q-VLq"/>
-                                    </connections>
-                                </textField>
-                            </subviews>
-                            <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
-                        </view>
-                        <prototypes>
-                            <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SingleMessageCell" textLabel="w5j-50-MOr" style="IBUITableViewCellStyleDefault" id="Gpd-po-46B">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gpd-po-46B" id="piD-Zg-MgY">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="w5j-50-MOr">
-                                            <rect key="frame" x="15" y="0.0" width="290" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Abx-nh-UdE" id="EhT-qV-fd4"/>
-                            <outlet property="delegate" destination="Abx-nh-UdE" id="oaD-Fy-9IT"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Contact Name" id="Q4v-yo-BRM"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="jxC-7f-w4i">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="435"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JwH-Xi-JzU">
+                                <rect key="frame" x="0.0" y="436" width="320" height="81"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F2o-zE-evE">
+                                        <rect key="frame" x="254" y="7" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Send">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="send:" destination="Xyv-9j-ZOD" eventType="touchUpInside" id="eNK-fS-Djl"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Cipher" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IKD-om-kRL">
+                                        <rect key="frame" x="20" y="7" width="226" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="Xyv-9j-ZOD" id="pNa-Zg-9nI"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Message" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="E8e-uX-1NF">
+                                        <rect key="frame" x="20" y="45" width="280" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="Xyv-9j-ZOD" id="NH1-2S-G89"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Contact Name" id="Ro5-OD-rOV"/>
                     <connections>
-                        <outlet property="cipherTextField" destination="IKD-om-kRL" id="kLn-pF-6bh"/>
-                        <outlet property="messageInputView" destination="JwH-Xi-JzU" id="vya-8d-I5f"/>
-                        <outlet property="messageTextField" destination="E8e-uX-1NF" id="rj1-mF-AIh"/>
-                        <outlet property="navigationBar" destination="Q4v-yo-BRM" id="bKT-fX-dGh"/>
+                        <outlet property="cipherTextField" destination="IKD-om-kRL" id="XjR-D3-4aG"/>
+                        <outlet property="messageInputView" destination="JwH-Xi-JzU" id="MFj-OF-Lg2"/>
+                        <outlet property="messageTextField" destination="E8e-uX-1NF" id="wdp-Hr-uUh"/>
+                        <outlet property="navigationBar" destination="Ro5-OD-rOV" id="XYf-6N-j3L"/>
+                        <outlet property="tableView" destination="jxC-7f-w4i" id="mx0-QX-iAx"/>
                     </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="K8F-4h-rK4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rXK-ro-FRb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="982" y="305"/>
+            <point key="canvasLocation" x="1012" y="305"/>
         </scene>
         <!--Navigation Controller - Contacts-->
         <scene sceneID="Rca-Mt-X9x">
