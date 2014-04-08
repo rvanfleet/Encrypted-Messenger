@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1F3020EB18ECF3D40019D218 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3020EA18ECF3D40019D218 /* Contact.m */; };
+		1F4EFE7218F38D4C006897A4 /* SingleMessageLeftTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4EFE7118F38D4C006897A4 /* SingleMessageLeftTableViewCell.m */; };
+		1F4EFE7518F38D58006897A4 /* SingleMessageRightTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4EFE7418F38D58006897A4 /* SingleMessageRightTableViewCell.m */; };
+		1F4EFE7918F38ED3006897A4 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4EFE7818F38ED3006897A4 /* Message.m */; };
 		1F70ED6118E9B4A600905D57 /* MessagesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F70ED6018E9B4A600905D57 /* MessagesTableViewController.m */; };
 		1FBF2A2218EF3D6600677DC1 /* SingleMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBF2A2118EF3D6600677DC1 /* SingleMessageViewController.m */; };
 		1FF3B7C818E8DC4B0081A0B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FF3B7C718E8DC4B0081A0B1 /* Foundation.framework */; };
@@ -27,7 +30,6 @@
 		1FF3B80518E8DDC30081A0B1 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF3B7FF18E8DDC30081A0B1 /* DataManager.m */; };
 		1FF3B80618E8DDC30081A0B1 /* DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF3B80218E8DDC30081A0B1 /* DataSource.m */; };
 		1FF3B80A18E8DDE70081A0B1 /* Messages.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1FF3B80818E8DDE70081A0B1 /* Messages.xcdatamodeld */; };
-		1FF3B81018E8DFCC0081A0B1 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF3B80F18E8DFCC0081A0B1 /* Message.m */; };
 		1FF3B82018E8E6300081A0B1 /* AddContactTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF3B81F18E8E6300081A0B1 /* AddContactTableViewController.m */; };
 		1FF3B82318E8EFFB0081A0B1 /* ContactsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF3B82118E8EFFB0081A0B1 /* ContactsTableViewController.m */; };
 		1FF3B82618E8F6A40081A0B1 /* EditContactTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF3B82518E8F6A40081A0B1 /* EditContactTableViewController.m */; };
@@ -46,6 +48,12 @@
 /* Begin PBXFileReference section */
 		1F3020E918ECF3D40019D218 /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
 		1F3020EA18ECF3D40019D218 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
+		1F4EFE7018F38D4C006897A4 /* SingleMessageLeftTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleMessageLeftTableViewCell.h; sourceTree = "<group>"; };
+		1F4EFE7118F38D4C006897A4 /* SingleMessageLeftTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleMessageLeftTableViewCell.m; sourceTree = "<group>"; };
+		1F4EFE7318F38D58006897A4 /* SingleMessageRightTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleMessageRightTableViewCell.h; sourceTree = "<group>"; };
+		1F4EFE7418F38D58006897A4 /* SingleMessageRightTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleMessageRightTableViewCell.m; sourceTree = "<group>"; };
+		1F4EFE7718F38ED3006897A4 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
+		1F4EFE7818F38ED3006897A4 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 		1F70ED5F18E9B4A600905D57 /* MessagesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagesTableViewController.h; sourceTree = "<group>"; };
 		1F70ED6018E9B4A600905D57 /* MessagesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagesTableViewController.m; sourceTree = "<group>"; };
 		1FBF2A2018EF3D6600677DC1 /* SingleMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleMessageViewController.h; sourceTree = "<group>"; };
@@ -76,8 +84,6 @@
 		1FF3B80218E8DDC30081A0B1 /* DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSource.m; sourceTree = "<group>"; };
 		1FF3B80318E8DDC30081A0B1 /* DataSourceCellConfigurer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSourceCellConfigurer.h; sourceTree = "<group>"; };
 		1FF3B80918E8DDE70081A0B1 /* Messages.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Messages.xcdatamodel; sourceTree = "<group>"; };
-		1FF3B80E18E8DFCC0081A0B1 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
-		1FF3B80F18E8DFCC0081A0B1 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 		1FF3B81E18E8E6300081A0B1 /* AddContactTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddContactTableViewController.h; sourceTree = "<group>"; };
 		1FF3B81F18E8E6300081A0B1 /* AddContactTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddContactTableViewController.m; sourceTree = "<group>"; };
 		1FF3B82118E8EFFB0081A0B1 /* ContactsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsTableViewController.m; sourceTree = "<group>"; };
@@ -110,9 +116,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F4EFE7618F38E3E006897A4 /* Table View Cells */ = {
+			isa = PBXGroup;
+			children = (
+				1F4EFE7018F38D4C006897A4 /* SingleMessageLeftTableViewCell.h */,
+				1F4EFE7118F38D4C006897A4 /* SingleMessageLeftTableViewCell.m */,
+				1F4EFE7318F38D58006897A4 /* SingleMessageRightTableViewCell.h */,
+				1F4EFE7418F38D58006897A4 /* SingleMessageRightTableViewCell.m */,
+			);
+			name = "Table View Cells";
+			sourceTree = "<group>";
+		};
 		1F70ED5E18E9AE1600905D57 /* Messages */ = {
 			isa = PBXGroup;
 			children = (
+				1F4EFE7618F38E3E006897A4 /* Table View Cells */,
 				1F70ED5F18E9B4A600905D57 /* MessagesTableViewController.h */,
 				1F70ED6018E9B4A600905D57 /* MessagesTableViewController.m */,
 				1FBF2A2018EF3D6600677DC1 /* SingleMessageViewController.h */,
@@ -198,6 +216,8 @@
 		1FF3B80718E8DDC80081A0B1 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				1F4EFE7718F38ED3006897A4 /* Message.h */,
+				1F4EFE7818F38ED3006897A4 /* Message.m */,
 				1FF3B7FC18E8DDC30081A0B1 /* MyDataManager.h */,
 				1FF3B7FD18E8DDC30081A0B1 /* MyDataManager.m */,
 				1FF3B7FE18E8DDC30081A0B1 /* DataManager.h */,
@@ -209,8 +229,6 @@
 				1FF3B80818E8DDE70081A0B1 /* Messages.xcdatamodeld */,
 				1F3020E918ECF3D40019D218 /* Contact.h */,
 				1F3020EA18ECF3D40019D218 /* Contact.m */,
-				1FF3B80E18E8DFCC0081A0B1 /* Message.h */,
-				1FF3B80F18E8DFCC0081A0B1 /* Message.m */,
 			);
 			name = "Core Data";
 			sourceTree = "<group>";
@@ -325,18 +343,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FF3B81018E8DFCC0081A0B1 /* Message.m in Sources */,
 				1FF3B80518E8DDC30081A0B1 /* DataManager.m in Sources */,
 				1FBF2A2218EF3D6600677DC1 /* SingleMessageViewController.m in Sources */,
 				1FF3B82318E8EFFB0081A0B1 /* ContactsTableViewController.m in Sources */,
+				1F4EFE7518F38D58006897A4 /* SingleMessageRightTableViewCell.m in Sources */,
 				1FF3B80618E8DDC30081A0B1 /* DataSource.m in Sources */,
 				1F3020EB18ECF3D40019D218 /* Contact.m in Sources */,
 				1FF3B82618E8F6A40081A0B1 /* EditContactTableViewController.m in Sources */,
+				1F4EFE7918F38ED3006897A4 /* Message.m in Sources */,
 				1FF3B80418E8DDC30081A0B1 /* MyDataManager.m in Sources */,
 				1FF3B7D818E8DC4B0081A0B1 /* AppDelegate.m in Sources */,
 				1F70ED6118E9B4A600905D57 /* MessagesTableViewController.m in Sources */,
 				1FF3B82018E8E6300081A0B1 /* AddContactTableViewController.m in Sources */,
 				1FF3B80A18E8DDE70081A0B1 /* Messages.xcdatamodeld in Sources */,
+				1F4EFE7218F38D4C006897A4 /* SingleMessageLeftTableViewCell.m in Sources */,
 				1FF3B7D418E8DC4B0081A0B1 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

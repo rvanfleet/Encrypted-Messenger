@@ -2,18 +2,20 @@
 //  Message.m
 //  Encrypted Messenger
 //
-//  Created by Ryan Van Fleet on 3/30/14.
+//  Created by Ryan Van Fleet on 4/7/14.
 //  Copyright (c) 2014 Ryan Van Fleet. All rights reserved.
 //
 
 #import "Message.h"
+#import "Contact.h"
 
 
 @implementation Message
 
-@dynamic date;
-@dynamic ciphertext;
 @dynamic cipher;
+@dynamic ciphertext;
+@dynamic date;
+@dynamic sentFromThisDevice;
 @dynamic contact;
 
 @end

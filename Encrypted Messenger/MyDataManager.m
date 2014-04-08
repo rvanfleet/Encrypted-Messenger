@@ -52,6 +52,7 @@
     message.date = [dictionary objectForKey:@"date"];
     message.ciphertext = [dictionary objectForKey:@"ciphertext"];
     message.cipher = [dictionary objectForKey:@"cipher"];
+    message.sentFromThisDevice = [dictionary objectForKey:@"sentFromThisDevice"];
     
     [dataManager saveContext];
 }

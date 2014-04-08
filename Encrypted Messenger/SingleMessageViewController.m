@@ -7,6 +7,8 @@
 //
 
 #import "SingleMessageViewController.h"
+#import "SingleMessageLeftTableViewCell.h"
+#import "SingleMessageRightTableViewCell.h"
 #import "DataSource.h"
 #import "MyDataManager.h"
 #import "Message.h"
@@ -94,6 +96,16 @@
     //Set keyboard notifications
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillBeHidden:) name:UIKeyboardWillHideNotification object:nil];
+    
+    if ([self.dataSource numberOfResultsInSection:0] != 0)
+    {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[self.dataSource numberOfResultsInSection:0] - 1
+                                                    inSection:0];
+        
+        [self.tableView scrollToRowAtIndexPath:indexPath
+                              atScrollPosition:UITableViewScrollPositionBottom
+                                      animated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -116,13 +128,30 @@
     {
         NSString* ciphertext = [self getCiphertextWithCipher:cipher AndPlaintext:message];
         
-        NSDictionary* dictionary = @{@"contact": self.contact,
+        NSDictionary* dictionarySent = @{@"contact": self.contact,
+                                     @"date": [NSDate date],
+                                     @"ciphertext": message,
+                                     @"cipher": @"",
+                                     @"sentFromThisDevice": @"yes"};
+        
+        [self.myDataManager addMessage:dictionarySent];
+        
+        NSDictionary* dictionaryReceive = @{@"contact": self.contact,
                                      @"date": [NSDate date],
                                      @"ciphertext": ciphertext,
-                                     @"cipher": cipher};
+                                     @"cipher": cipher,
+                                     @"sentFromThisDevice": @"no"};
         
-        [self.myDataManager addMessage:dictionary];
+        [self.myDataManager addMessage:dictionaryReceive];
     }
+    
+    [self.cipherTextField resignFirstResponder];
+    [self.messageTextField resignFirstResponder];
+    
+    [self.tableView setContentOffset:CGPointMake(0, CGFLOAT_MAX)];
+    
+    self.cipherTextField.text = @"";
+    self.messageTextField.text = @"";
 }
 
 #pragma mark - Data Source Cell Configurer
@@ -136,12 +165,32 @@
     
     NSString* plaintext = [self getPlaintextWithCipher:cipher AndCiphertext:ciphertext];
     
-    cell.textLabel.text = plaintext;
+    if ([message.sentFromThisDevice isEqualToString:@"yes"])
+    {
+        SingleMessageRightTableViewCell* tableViewCell = (SingleMessageRightTableViewCell*)cell;
+        
+        tableViewCell.textView.text = plaintext;
+    }
+    else
+    {
+        SingleMessageLeftTableViewCell* tableViewCell = (SingleMessageLeftTableViewCell*)cell;
+        
+        tableViewCell.textView.text = plaintext;
+    }
 }
 
 -(NSString*)cellIdentifierForObject:(id)object
 {
-    return @"SingleMessageCell";
+    Message* message = object;
+    
+    if ([message.sentFromThisDevice isEqualToString:@"yes"])
+    {
+        return @"SingleMessageCellRight";
+    }
+    else
+    {
+        return @"SingleMessageCellLeft";
+    }
 }
 
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -212,6 +261,7 @@
         
         plaintext = plaintextMutable;
     }
+    //No cipher was selected
     else
     {
         plaintext = ciphertext;
