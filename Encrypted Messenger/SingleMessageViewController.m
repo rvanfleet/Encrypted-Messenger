@@ -209,6 +209,8 @@
     if (textField == self.cipherTextField)
     {
         textField.text = [self.cipherPickerData objectAtIndex:0];
+        
+        [self.cipherPickerView selectRow:0 inComponent:0 animated:NO];
     }
 }
 
@@ -232,6 +234,38 @@
         
         ciphertext = ciphertextMutable;
     }
+    //Second cipher selected - Permutation
+    else if ([cipher isEqualToString:[self.cipherPickerData objectAtIndex:1]])
+    {
+        NSMutableString* ciphertextMutable = [plaintext mutableCopy];
+        
+        //Exchange every character with its following character starting from the beginning
+        //   and continuing to the second to last character in the plaintext
+        for (NSInteger index = 0; index < [plaintext length] - 1; index++)
+        {
+            char currentPlaintextChar = [ciphertextMutable characterAtIndex:index];
+            char nextPlaintextChar = [ciphertextMutable characterAtIndex:index + 1];
+            
+            NSRange currentRange;
+            currentRange.location = index;
+            currentRange.length = 1;
+            
+            [ciphertextMutable replaceCharactersInRange:currentRange
+                                             withString:[NSString stringWithFormat:@"%c",
+                                                         nextPlaintextChar]];
+            
+            NSRange nextRange;
+            nextRange.location = index + 1;
+            nextRange.length = 1;
+            
+            [ciphertextMutable replaceCharactersInRange:nextRange
+                                             withString:[NSString stringWithFormat:@"%c",
+                                                         currentPlaintextChar]];
+        }
+        
+        ciphertext = ciphertextMutable;
+    }
+    //No cipher was selected
     else
     {
         ciphertext = plaintext;
@@ -247,7 +281,6 @@
     //First cipher was selected - Caesar's Cipher
     if ([cipher isEqualToString:[self.cipherPickerData objectAtIndex:0]])
     {
-        
         NSMutableString* plaintextMutable = [[NSMutableString alloc] init];
         
         for (NSInteger index = 0; index < [ciphertext length]; index++)
@@ -257,6 +290,37 @@
             char currentPlaintextChar = currentCiphertextChar - kCaesarCipherKey;
             
             [plaintextMutable appendString:[NSString stringWithFormat:@"%c", currentPlaintextChar]];
+        }
+        
+        plaintext = plaintextMutable;
+    }
+    //Second cipher selected - Permutation
+    else if ([cipher isEqualToString:[self.cipherPickerData objectAtIndex:1]])
+    {
+        NSMutableString* plaintextMutable = [ciphertext mutableCopy];
+        
+        //Exchange every character with its previous character starting from the second to
+        //   last character and continuing to the first character in the plaintext
+        for (NSInteger index = [ciphertext length] - 1; index > 0; index--)
+        {
+            char currentCiphertextChar = [plaintextMutable characterAtIndex:index];
+            char previousCiphertextChar = [plaintextMutable characterAtIndex:index - 1];
+            
+            NSRange currentRange;
+            currentRange.location = index;
+            currentRange.length = 1;
+            
+            [plaintextMutable replaceCharactersInRange:currentRange
+                                            withString:[NSString stringWithFormat:@"%c",
+                                                        previousCiphertextChar]];
+            
+            NSRange previousRange;
+            previousRange.location = index - 1;
+            previousRange.length = 1;
+            
+            [plaintextMutable replaceCharactersInRange:previousRange
+                                            withString:[NSString stringWithFormat:@"%c",
+                                                        currentCiphertextChar]];
         }
         
         plaintext = plaintextMutable;
@@ -326,6 +390,16 @@
                                                   self.messageInputView.frame.size.width,
                                                   self.messageInputView.frame.size.height);
      }];
+    
+    if ([self.dataSource numberOfResultsInSection:0] != 0)
+    {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[self.dataSource numberOfResultsInSection:0] - 1
+                                                    inSection:0];
+        
+        [self.tableView scrollToRowAtIndexPath:indexPath
+                              atScrollPosition:UITableViewScrollPositionBottom
+                                      animated:YES];
+    }
 }
 
 -(void)keyboardWillBeHidden:(NSNotification*)notification
