@@ -175,7 +175,8 @@
     {
         SingleMessageLeftTableViewCell* tableViewCell = (SingleMessageLeftTableViewCell*)cell;
         
-        tableViewCell.textView.text = plaintext;
+        tableViewCell.textView.text = [NSString stringWithFormat:@"Ciphertext: %@\n\nPlaintext: %@",
+                                       ciphertext, plaintext];
     }
 }
 
@@ -277,7 +278,7 @@
 -(NSString*)getPlaintextWithCipher:(NSString*)cipher AndCiphertext:(NSString*)ciphertext
 {
     NSString* plaintext;
-    /*
+    
     //First cipher was selected - Caesar's Cipher
     if ([cipher isEqualToString:[self.cipherPickerData objectAtIndex:0]])
     {
@@ -330,9 +331,7 @@
     {
         plaintext = ciphertext;
     }
-    */
-    
-    plaintext = ciphertext;
+
     return plaintext;
 }
 

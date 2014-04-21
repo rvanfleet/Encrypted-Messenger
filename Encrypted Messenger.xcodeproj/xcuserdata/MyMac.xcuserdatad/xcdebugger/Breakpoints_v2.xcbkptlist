@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Encrypted Messenger/SingleMessageViewController.m"
-            timestampString = "418764898.373231"
+            timestampString = "419783487.959278"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "407"
@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Encrypted Messenger/SingleMessageViewController.m"
-            timestampString = "418620570.440939"
+            timestampString = "419783443.650339"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "298"
-            endingLineNumber = "298"
+            startingLineNumber = "299"
+            endingLineNumber = "299"
             landmarkName = "-getPlaintextWithCipher:AndCiphertext:"
             landmarkType = "5">
          </BreakpointContent>
