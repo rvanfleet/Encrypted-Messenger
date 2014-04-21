@@ -10,7 +10,9 @@
 #import "DataSource.h"
 #import "MyDataManager.h"
 #import "Contact.h"
+#import "Message.h"
 #import "SingleMessageViewController.h"
+#import "ComposeMessageTableViewController.h"
 
 @interface MessagesTableViewController ()
 
@@ -29,8 +31,8 @@
     if (self)
     {
         _myDataManager = [[MyDataManager alloc] init];
-        _dataSource = [[DataSource alloc] initForEntity:@"Contact"              //Get all contacts
-                                               sortKeys:@[@"lastName"]
+        _dataSource = [[DataSource alloc] initForEntity:@"Message"              //Get all messages
+                                               sortKeys:@[@"date"]
                                               ascending:YES
                                               predicate:nil
                                      sectionNameKeyPath:nil
@@ -57,15 +59,64 @@
     [super didReceiveMemoryWarning];
 }
 
+-(BOOL)contactIsAlreadyInTableViewFromMessage:(Message*)message
+{
+    BOOL contactInTableView = NO;
+    
+    for (NSInteger index = 0; index < [self.dataSource numberOfResultsInSection:0]; index++)
+    {
+        Message* currentMessage = [self.dataSource objectAtIndexPath:
+                                   [NSIndexPath indexPathForRow:index inSection:0]];
+        
+        if (currentMessage == message)
+        {
+            break;
+        }
+        else
+        {
+            if (currentMessage.contact == message.contact)
+            {
+                contactInTableView = YES;
+                break;
+            }
+        }
+    }
+    
+    return contactInTableView;
+}
+
 #pragma mark - Data Source Cell Configurer
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Message* message = [self.dataSource objectAtIndexPath:indexPath];
+    
+    if ([self contactIsAlreadyInTableViewFromMessage:message])
+    {
+        return 0;
+    }
+    else
+    {
+        return 44;
+    }
+}
 
 -(void)configureCell:(UITableViewCell *)cell withObject:(id)object
 {
-    Contact* contact = object;
+    Message* message = object;
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", contact.firstName, contact.lastName];
-    
-    cell.detailTextLabel.text = @"";
+    if ([self contactIsAlreadyInTableViewFromMessage:message])
+    {
+        cell.hidden = YES;
+    }
+    else
+    {
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ %@",
+                               message.contact.firstName,
+                               message.contact.lastName];
+        
+        cell.detailTextLabel.text = @"";
+    }
 }
 
 -(NSString*)cellIdentifierForObject:(id)object
@@ -87,7 +138,21 @@
         
         NSIndexPath* selectedIndexPath = [self.tableView indexPathForSelectedRow];
         
-        singleMessageViewController.contact = [self.dataSource objectAtIndexPath:selectedIndexPath];
+        Message* selectedMessage = [self.dataSource objectAtIndexPath:selectedIndexPath];
+        
+        singleMessageViewController.contact = selectedMessage.contact;
+    }
+    else if ([segue.identifier isEqualToString:@"ComposeMessageSegue"])
+    {
+        ComposeMessageTableViewController* composeMessageController = segue.destinationViewController;
+        
+        composeMessageController.completionBlock = ^(id obj){
+            [self dismissViewControllerAnimated:YES completion:NULL];
+            if (obj)
+            {
+                
+            }
+        };
     }
 }
 

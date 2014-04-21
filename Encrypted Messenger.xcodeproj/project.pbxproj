@@ -12,6 +12,7 @@
 		1F4EFE7518F38D58006897A4 /* SingleMessageRightTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4EFE7418F38D58006897A4 /* SingleMessageRightTableViewCell.m */; };
 		1F4EFE7918F38ED3006897A4 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4EFE7818F38ED3006897A4 /* Message.m */; };
 		1F70ED6118E9B4A600905D57 /* MessagesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F70ED6018E9B4A600905D57 /* MessagesTableViewController.m */; };
+		1F83F7611905655A0054325F /* ComposeMessageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F83F7601905655A0054325F /* ComposeMessageTableViewController.m */; };
 		1FBF2A2218EF3D6600677DC1 /* SingleMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBF2A2118EF3D6600677DC1 /* SingleMessageViewController.m */; };
 		1FF3B7C818E8DC4B0081A0B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FF3B7C718E8DC4B0081A0B1 /* Foundation.framework */; };
 		1FF3B7CA18E8DC4B0081A0B1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FF3B7C918E8DC4B0081A0B1 /* CoreGraphics.framework */; };
@@ -56,6 +57,8 @@
 		1F4EFE7818F38ED3006897A4 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 		1F70ED5F18E9B4A600905D57 /* MessagesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagesTableViewController.h; sourceTree = "<group>"; };
 		1F70ED6018E9B4A600905D57 /* MessagesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagesTableViewController.m; sourceTree = "<group>"; };
+		1F83F75F1905655A0054325F /* ComposeMessageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeMessageTableViewController.h; sourceTree = "<group>"; };
+		1F83F7601905655A0054325F /* ComposeMessageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeMessageTableViewController.m; sourceTree = "<group>"; };
 		1FBF2A2018EF3D6600677DC1 /* SingleMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleMessageViewController.h; sourceTree = "<group>"; };
 		1FBF2A2118EF3D6600677DC1 /* SingleMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleMessageViewController.m; sourceTree = "<group>"; };
 		1FF3B7C418E8DC4B0081A0B1 /* Encrypted Messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Encrypted Messenger.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,6 +138,8 @@
 				1F70ED6018E9B4A600905D57 /* MessagesTableViewController.m */,
 				1FBF2A2018EF3D6600677DC1 /* SingleMessageViewController.h */,
 				1FBF2A2118EF3D6600677DC1 /* SingleMessageViewController.m */,
+				1F83F75F1905655A0054325F /* ComposeMessageTableViewController.h */,
+				1F83F7601905655A0054325F /* ComposeMessageTableViewController.m */,
 			);
 			name = Messages;
 			sourceTree = "<group>";
@@ -343,6 +348,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F83F7611905655A0054325F /* ComposeMessageTableViewController.m in Sources */,
 				1FF3B80518E8DDC30081A0B1 /* DataManager.m in Sources */,
 				1FBF2A2218EF3D6600677DC1 /* SingleMessageViewController.m in Sources */,
 				1FF3B82318E8EFFB0081A0B1 /* ContactsTableViewController.m in Sources */,
