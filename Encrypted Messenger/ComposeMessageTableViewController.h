@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DataSourceCellConfigurer.h"
 
-@interface ComposeMessageTableViewController : UITableViewController <UITextFieldDelegate>
+@interface ComposeMessageTableViewController : UITableViewController <UITextFieldDelegate, DataSourceCellConfigurer, UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property (nonatomic, copy) CompletionBlock completionBlock;
 
