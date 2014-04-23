@@ -9,11 +9,10 @@
 #import "SingleMessageViewController.h"
 #import "SingleMessageLeftTableViewCell.h"
 #import "SingleMessageRightTableViewCell.h"
+#import "MessagesGlobalVariablesAndFunctions.h"
 #import "DataSource.h"
 #import "MyDataManager.h"
 #import "Message.h"
-
-#define kCaesarCipherKey 3
 
 @interface SingleMessageViewController ()
 
@@ -27,7 +26,8 @@
 @property (nonatomic, strong) MyDataManager *myDataManager;
 
 @property (nonatomic, strong) UIPickerView* cipherPickerView;
-@property (nonatomic, strong) NSArray* cipherPickerData;
+
+@property (nonatomic, strong) MessagesGlobalVariablesAndFunctions* globalData;
 
 @property CGRect messageInputViewOriginalFrame;
 @property NSInteger tabBarHeight;
@@ -56,6 +56,10 @@
 {
     [super viewDidLoad];
     
+    self.globalData = [[MessagesGlobalVariablesAndFunctions alloc] init];
+    
+    [self.globalData createAllGlobalVariables];
+    
     NSPredicate* predicate = [NSPredicate predicateWithFormat:@"contact.identifier == %@", self.contact.identifier];
     
     self.dataSource = [self.dataSource initForEntity:@"Message"              //Get all messages
@@ -71,10 +75,6 @@
     self.navigationBar.title = [NSString stringWithFormat:@"%@ %@", self.contact.firstName, self.contact.lastName];
     
     CGRect pickerFrame = CGRectMake(0, 40, 0, 0);
-    
-    self.cipherPickerData = @[@"Caesar's Cipher",
-                              @"Permutation",
-                              @"Double Transposition"];
     
     self.cipherPickerView = [[UIPickerView alloc] initWithFrame:pickerFrame];
     
@@ -118,31 +118,15 @@
     NSString* cipher = self.cipherTextField.text;
     NSString* message = self.messageTextField.text;
     
-    if ([cipher isEqualToString:@""] || [message isEqualToString:@""])
+    if ([cipher isEqualToString:@""])
     {
-        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Send Unsuccessful" message:@"Please enter both a cipher and a message to be able to send." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Send Unsuccessful" message:@"Please select a cipher." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         
         [alert show];
     }
     else
     {
-        NSString* ciphertext = [self getCiphertextWithCipher:cipher AndPlaintext:message];
-        
-        NSDictionary* dictionarySent = @{@"contact": self.contact,
-                                     @"date": [NSDate date],
-                                     @"ciphertext": message,
-                                     @"cipher": @"",
-                                     @"sentFromThisDevice": @"yes"};
-        
-        [self.myDataManager addMessage:dictionarySent];
-        
-        NSDictionary* dictionaryReceive = @{@"contact": self.contact,
-                                     @"date": [NSDate date],
-                                     @"ciphertext": ciphertext,
-                                     @"cipher": cipher,
-                                     @"sentFromThisDevice": @"no"};
-        
-        [self.myDataManager addMessage:dictionaryReceive];
+        [self.globalData sendMessage:message withCipher:cipher toContact:self.contact];
     }
     
     [self.cipherTextField resignFirstResponder];
@@ -163,7 +147,7 @@
     NSString* cipher = message.cipher;
     NSString* ciphertext = message.ciphertext;
     
-    NSString* plaintext = [self getPlaintextWithCipher:cipher AndCiphertext:ciphertext];
+    NSString* plaintext = [self.globalData getPlaintextWithCipher:cipher AndCiphertext:ciphertext];
     
     if ([message.sentFromThisDevice isEqualToString:@"yes"])
     {
@@ -209,130 +193,10 @@
 {
     if (textField == self.cipherTextField)
     {
-        textField.text = [self.cipherPickerData objectAtIndex:0];
+        textField.text = [self.globalData.cipherPickerData objectAtIndex:0];
         
         [self.cipherPickerView selectRow:0 inComponent:0 animated:NO];
     }
-}
-
--(NSString*)getCiphertextWithCipher:(NSString*)cipher AndPlaintext:(NSString*)plaintext
-{
-    NSString* ciphertext;
-    
-    //First cipher was selected - Caesar's Cipher
-    if ([cipher isEqualToString:[self.cipherPickerData objectAtIndex:0]])
-    {
-        NSMutableString* ciphertextMutable = [[NSMutableString alloc] init];
-        
-        for (NSInteger index = 0; index < [plaintext length]; index++)
-        {
-            char currentPlaintextChar = [plaintext characterAtIndex:index];
-            
-            char currentCiphertextChar = currentPlaintextChar + kCaesarCipherKey;
-            
-            [ciphertextMutable appendString:[NSString stringWithFormat:@"%c", currentCiphertextChar]];
-        }
-        
-        ciphertext = ciphertextMutable;
-    }
-    //Second cipher selected - Permutation
-    else if ([cipher isEqualToString:[self.cipherPickerData objectAtIndex:1]])
-    {
-        NSMutableString* ciphertextMutable = [plaintext mutableCopy];
-        
-        //Exchange every character with its following character starting from the beginning
-        //   and continuing to the second to last character in the plaintext
-        for (NSInteger index = 0; index < [plaintext length] - 1; index++)
-        {
-            char currentPlaintextChar = [ciphertextMutable characterAtIndex:index];
-            char nextPlaintextChar = [ciphertextMutable characterAtIndex:index + 1];
-            
-            NSRange currentRange;
-            currentRange.location = index;
-            currentRange.length = 1;
-            
-            [ciphertextMutable replaceCharactersInRange:currentRange
-                                             withString:[NSString stringWithFormat:@"%c",
-                                                         nextPlaintextChar]];
-            
-            NSRange nextRange;
-            nextRange.location = index + 1;
-            nextRange.length = 1;
-            
-            [ciphertextMutable replaceCharactersInRange:nextRange
-                                             withString:[NSString stringWithFormat:@"%c",
-                                                         currentPlaintextChar]];
-        }
-        
-        ciphertext = ciphertextMutable;
-    }
-    //No cipher was selected
-    else
-    {
-        ciphertext = plaintext;
-    }
-    
-    return ciphertext;
-}
-
--(NSString*)getPlaintextWithCipher:(NSString*)cipher AndCiphertext:(NSString*)ciphertext
-{
-    NSString* plaintext;
-    
-    //First cipher was selected - Caesar's Cipher
-    if ([cipher isEqualToString:[self.cipherPickerData objectAtIndex:0]])
-    {
-        NSMutableString* plaintextMutable = [[NSMutableString alloc] init];
-        
-        for (NSInteger index = 0; index < [ciphertext length]; index++)
-        {
-            char currentCiphertextChar = [ciphertext characterAtIndex:index];
-            
-            char currentPlaintextChar = currentCiphertextChar - kCaesarCipherKey;
-            
-            [plaintextMutable appendString:[NSString stringWithFormat:@"%c", currentPlaintextChar]];
-        }
-        
-        plaintext = plaintextMutable;
-    }
-    //Second cipher selected - Permutation
-    else if ([cipher isEqualToString:[self.cipherPickerData objectAtIndex:1]])
-    {
-        NSMutableString* plaintextMutable = [ciphertext mutableCopy];
-        
-        //Exchange every character with its previous character starting from the second to
-        //   last character and continuing to the first character in the plaintext
-        for (NSInteger index = [ciphertext length] - 1; index > 0; index--)
-        {
-            char currentCiphertextChar = [plaintextMutable characterAtIndex:index];
-            char previousCiphertextChar = [plaintextMutable characterAtIndex:index - 1];
-            
-            NSRange currentRange;
-            currentRange.location = index;
-            currentRange.length = 1;
-            
-            [plaintextMutable replaceCharactersInRange:currentRange
-                                            withString:[NSString stringWithFormat:@"%c",
-                                                        previousCiphertextChar]];
-            
-            NSRange previousRange;
-            previousRange.location = index - 1;
-            previousRange.length = 1;
-            
-            [plaintextMutable replaceCharactersInRange:previousRange
-                                            withString:[NSString stringWithFormat:@"%c",
-                                                        currentCiphertextChar]];
-        }
-        
-        plaintext = plaintextMutable;
-    }
-    //No cipher was selected
-    else
-    {
-        plaintext = ciphertext;
-    }
-
-    return plaintext;
 }
 
 #pragma mark - Picker View Delegate
@@ -343,17 +207,17 @@
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    self.cipherTextField.text = [self.cipherPickerData objectAtIndex:row];
+    self.cipherTextField.text = [self.globalData.cipherPickerData objectAtIndex:row];
 }
 
 -(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    return [self.cipherPickerData count];
+    return [self.globalData.cipherPickerData count];
 }
 
 -(NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    return [self.cipherPickerData objectAtIndex:row];
+    return [self.globalData.cipherPickerData objectAtIndex:row];
 }
 
 #pragma mark - Notification Handlers

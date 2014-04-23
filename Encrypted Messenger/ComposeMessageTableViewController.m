@@ -7,6 +7,7 @@
 //
 
 #import "ComposeMessageTableViewController.h"
+#import "MessagesGlobalVariablesAndFunctions.h"
 #import "DataSource.h"
 #import "MyDataManager.h"
 
@@ -21,7 +22,8 @@
 @property (nonatomic, strong) UIPickerView* contactPickerView;
 
 @property (nonatomic, strong) UIPickerView* cipherPickerView;
-@property (nonatomic, strong) NSArray* cipherPickerData;
+
+@property (nonatomic, strong) MessagesGlobalVariablesAndFunctions* globalData;
 
 @end
 
@@ -52,6 +54,10 @@
 {
     [super viewDidLoad];
     
+    self.globalData = [[MessagesGlobalVariablesAndFunctions alloc] init];
+    
+    [self.globalData createAllGlobalVariables];
+    
     CGRect pickerFrame = CGRectMake(0, 40, 0, 0);
     
     self.contactPickerView = [[UIPickerView alloc] initWithFrame:pickerFrame];
@@ -61,10 +67,6 @@
     self.contactPickerView.delegate = self;
     
     [self.contactTextField setInputView:self.contactPickerView];
-    
-    self.cipherPickerData = @[@"Caesar's Cipher",
-                              @"Permutation",
-                              @"Double Transposition"];
     
     self.cipherPickerView = [[UIPickerView alloc] initWithFrame:pickerFrame];
     
@@ -89,6 +91,25 @@
 
 - (IBAction)sendPressed:(id)sender
 {
+    if ([self.contactTextField.text isEqualToString:@""] ||
+        [self.cipherTextField.text isEqualToString:@""])
+    {
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Send Unsuccessful" message:@"Please select both a contact to send this message to and a cipher to be used." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        
+        [alert show];
+    }
+    else
+    {
+        NSIndexPath* selectedIndexPath = [NSIndexPath indexPathForRow:
+                                          [self.contactPickerView selectedRowInComponent:0]
+                                                            inSection:0];
+        
+        Contact* contact = [self.dataSource objectAtIndexPath:selectedIndexPath];
+        
+        [self.globalData sendMessage:self.messageTextField.text withCipher:self.cipherTextField.text toContact:contact];
+        
+        self.completionBlock(nil);
+    }
 }
 
 - (IBAction)cancelPressed:(id)sender
@@ -130,7 +151,7 @@
     }
     else if (textField == self.cipherTextField)
     {
-        textField.text = [self.cipherPickerData objectAtIndex:0];
+        textField.text = [self.globalData.cipherPickerData objectAtIndex:0];
         
         [self.cipherPickerView selectRow:0 inComponent:0 animated:NO];
     }
@@ -152,7 +173,7 @@
     }
     else if (pickerView == self.cipherPickerView)
     {
-        self.cipherTextField.text = [self.cipherPickerData objectAtIndex:row];
+        self.cipherTextField.text = [self.globalData.cipherPickerData objectAtIndex:row];
     }
 }
 
@@ -164,7 +185,7 @@
     }
     else
     {
-        return [self.cipherPickerData count];
+        return [self.globalData.cipherPickerData count];
     }
 }
 
@@ -178,7 +199,7 @@
     }
     else
     {
-        return [self.cipherPickerData objectAtIndex:row];
+        return [self.globalData.cipherPickerData objectAtIndex:row];
     }
 }
 
