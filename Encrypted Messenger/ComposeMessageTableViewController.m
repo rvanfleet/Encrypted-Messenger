@@ -108,7 +108,7 @@
         
         [self.globalData sendMessage:self.messageTextField.text withCipher:self.cipherTextField.text toContact:contact];
         
-        self.completionBlock(nil);
+        self.completionBlock(contact);
     }
 }
 

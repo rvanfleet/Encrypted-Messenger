@@ -20,6 +20,8 @@
 @property (strong, nonatomic) DataSource* dataSource;
 @property (nonatomic,strong) MyDataManager *myDataManager;
 
+@property (nonatomic, strong) Contact* contactSentToFromCompose;
+
 @end
 
 @implementation MessagesTableViewController
@@ -33,7 +35,7 @@
         _myDataManager = [[MyDataManager alloc] init];
         _dataSource = [[DataSource alloc] initForEntity:@"Message"              //Get all messages
                                                sortKeys:@[@"date"]
-                                              ascending:YES
+                                              ascending:NO
                                               predicate:nil
                                      sectionNameKeyPath:nil
                                     dataManagerDelegate:_myDataManager];
@@ -52,6 +54,11 @@
     self.dataSource.tableView = self.tableView;
     
     //self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -138,19 +145,36 @@
         
         NSIndexPath* selectedIndexPath = [self.tableView indexPathForSelectedRow];
         
-        Message* selectedMessage = [self.dataSource objectAtIndexPath:selectedIndexPath];
+        Contact* contactToSegueTo;
         
-        singleMessageViewController.contact = selectedMessage.contact;
+        if (selectedIndexPath == nil)
+        {
+            contactToSegueTo = self.contactSentToFromCompose;
+        }
+        else
+        {
+            Message* selectedMessage = [self.dataSource objectAtIndexPath:selectedIndexPath];
+            
+            contactToSegueTo = selectedMessage.contact;
+        }
+        
+        singleMessageViewController.contact = contactToSegueTo;
     }
     else if ([segue.identifier isEqualToString:@"ComposeMessageSegue"])
     {
         ComposeMessageTableViewController* composeMessageController = segue.destinationViewController;
         
         composeMessageController.completionBlock = ^(id obj){
+            
             [self dismissViewControllerAnimated:YES completion:NULL];
+            
             if (obj)
             {
+                Contact* contact = obj;
                 
+                self.contactSentToFromCompose = contact;
+                
+                [self performSegueWithIdentifier:@"MessageSegue" sender:self];
             }
         };
     }
