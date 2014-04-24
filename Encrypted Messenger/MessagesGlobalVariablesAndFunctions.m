@@ -96,6 +96,12 @@
         
         ciphertext = ciphertextMutable;
     }
+    //Third cipher selected - Double Transposition
+    else if ([cipher isEqualToString:[self.cipherPickerData objectAtIndex:2]])
+    {
+        //Implement double transposition encryption
+        ciphertext = plaintext;
+    }
     //No cipher was selected
     else
     {
@@ -155,6 +161,12 @@
         }
         
         plaintext = plaintextMutable;
+    }
+    //Third cipher selected - Double Transposition
+    else if ([cipher isEqualToString:[self.cipherPickerData objectAtIndex:2]])
+    {
+       //Implement double transposition decryption
+        plaintext = ciphertext;
     }
     //No cipher was selected
     else
