@@ -9,6 +9,8 @@
 #import "MessagesGlobalVariablesAndFunctions.h"
 #import "Contact.h"
 #import "MyDataManager.h"
+#import "RNEncryptor.h"
+#import "RNDecryptor.h"
 
 #define kCaesarCipherKey 3
 
@@ -18,7 +20,9 @@
 {
     self.cipherPickerData = @[@"Caesar's Cipher",
                               @"Permutation",
-                              @"Double Transposition"];
+                              @"Double Transposition",
+                              @"AES",
+                              @"DES"];
     
     self.myDataManager = [[MyDataManager alloc] init];
 }
@@ -102,6 +106,42 @@
         //Implement double transposition encryption
         ciphertext = plaintext;
     }
+    //Fourth cipher selected - AES
+    else if ([cipher isEqualToString:[self.cipherPickerData objectAtIndex:3]])
+    {
+        NSString *password = @"my password";
+        NSData *data = [plaintext dataUsingEncoding:NSUTF8StringEncoding];
+        NSError *error;
+        NSData *encryptedData = [RNEncryptor encryptData:data
+                                            withSettings:kRNCryptorAES256Settings
+                                                password:password
+                                                   error:&error];
+        NSString *string = [[NSString alloc] initWithData:encryptedData encoding:NSUTF8StringEncoding];
+        if (string) {
+            ciphertext = string;
+        }
+        else {
+            ciphertext = [encryptedData base64EncodedStringWithOptions:0];
+        }
+    }
+    //Fifth cipher selected - DES
+    else if ([cipher isEqualToString:[self.cipherPickerData objectAtIndex:4]])
+    {
+        NSString *password = @"my password";
+        NSData *data = [plaintext dataUsingEncoding:NSUTF8StringEncoding];
+        NSError *error;
+        NSData *encryptedData = [RNEncryptor encryptData:data
+                                            withSettings:kRNCryptorDESSettings
+                                                password:password
+                                                   error:&error];
+        NSString *string = [[NSString alloc] initWithData:encryptedData encoding:NSUTF8StringEncoding];
+        if (string) {
+            ciphertext = string;
+        }
+        else {
+            ciphertext = [encryptedData base64EncodedStringWithOptions:0];
+        }
+    }
     //No cipher was selected
     else
     {
@@ -167,6 +207,41 @@
     {
        //Implement double transposition decryption
         plaintext = ciphertext;
+    }
+    //Fourth cipher selected - AES
+    else if ([cipher isEqualToString:[self.cipherPickerData objectAtIndex:3]])
+    {
+        NSString *password = @"my password";
+        NSError *error;
+        NSData *encryptedData = [[NSData alloc] initWithBase64EncodedString: ciphertext options:NSDataBase64DecodingIgnoreUnknownCharacters];
+        NSData *decryptedData = [RNDecryptor decryptData:encryptedData
+                                                withPassword:password
+                                                   error:&error];
+        NSString *string = [[NSString alloc] initWithData:decryptedData encoding:NSUTF8StringEncoding];
+        if (string) {
+            plaintext = string;
+        }
+        else {
+            plaintext = [decryptedData base64EncodedStringWithOptions:0];
+        }
+    }
+    //Fifth cipher selected - AES
+    else if ([cipher isEqualToString:[self.cipherPickerData objectAtIndex:4]])
+    {
+        NSString *password = @"my password";
+        NSError *error;
+        NSData *encryptedData = [[NSData alloc] initWithBase64EncodedString: ciphertext options:NSDataBase64DecodingIgnoreUnknownCharacters];
+        NSData *decryptedData = [RNDecryptor decryptData:encryptedData
+                                            withSettings:kRNCryptorDESSettings
+                                            password:password
+                                                   error:&error];
+        NSString *string = [[NSString alloc] initWithData:decryptedData encoding:NSUTF8StringEncoding];
+        if (string) {
+            plaintext = string;
+        }
+        else {
+            plaintext = [decryptedData base64EncodedStringWithOptions:0];
+        }
     }
     //No cipher was selected
     else

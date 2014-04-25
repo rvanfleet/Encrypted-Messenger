@@ -159,8 +159,8 @@
     {
         SingleMessageLeftTableViewCell* tableViewCell = (SingleMessageLeftTableViewCell*)cell;
         
-        tableViewCell.textView.text = [NSString stringWithFormat:@"Ciphertext: %@\n\nPlaintext: %@",
-                                       ciphertext, plaintext];
+        tableViewCell.textView.text = [NSString stringWithFormat:@"Plaintext: %@",
+                                       plaintext];
     }
 }
 
